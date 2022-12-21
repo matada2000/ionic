@@ -1,0 +1,7 @@
+{
+  "name": "Inwentaryzacja_ionic",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
