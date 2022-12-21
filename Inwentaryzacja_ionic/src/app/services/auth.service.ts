@@ -21,7 +21,7 @@ export class AuthService {
     this.loadStoredToken();
   }
 
-  loadStoredToken() {
+  async loadStoredToken() {
     let platformObs = from(this.plt.ready());
     this.user = platformObs.pipe(
       switchMap(() => {
@@ -38,9 +38,10 @@ export class AuthService {
         }
       })
     );
+    await this.storage.create();
   }
 
-  login(credentials: {email: string, pw: string}): Observable<any> {
+  login(credentials: { email: string, pw: string }): Observable<any> {
     if (credentials.email != 'test@gmail.com' || credentials.pw != '123') {
       return null;
     }
