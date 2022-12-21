@@ -33,6 +33,7 @@ export class AuthService {
           let decoded = helper.decodeToken(token);
           console.log('decded: ', decoded);
           this.userData.next(decoded);
+          return true;
         } else {
           return null;
         }
@@ -53,7 +54,7 @@ export class AuthService {
       }),
       switchMap(token => {
         let decoded = helper.decodeToken(token);
-        console.log('login decded: ', decoded);
+        console.log('login decoded: ', decoded);
         this.userData.next(decoded);
 
         let storageObs = from(this.storage.set(TOKEN_KEY, token));
